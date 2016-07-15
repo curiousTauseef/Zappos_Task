@@ -283,22 +283,22 @@ ggplot(temp, aes(x = temp)) + geom_histogram(col = "darkblue" , fill = "cornflow
 
 # Linear Regression
 
-model1 = lm(formula = (gross_sales) ~ visits, data = data1)
+model1 = lm(formula = log(gross_sales) ~ visits, data = data1)
 summary(model1)
 
-model2 = lm(formula = (gross_sales) ~ platform, data = data1)
+model2 = lm(formula = log(gross_sales) ~ platform, data = data1)
 summary(model2)
 
-model3 = lm(formula = (gross_sales) ~ new_customer, data = data1)
+model3 = lm(formula = log(gross_sales) ~ new_customer, data = data1)
 summary(model3)
 
 
-model4 = lm(formula = (gross_sales) ~ site + new_customer + platform + bounces + product_page_views, data = data1)
+model4 = lm(formula = log(gross_sales) ~ site + new_customer + platform + bounces + product_page_views, data = data1)
 summary(model4)
 
-predict(model4, newdata = data.frame(site='Acme',new_customer=1,platform='Windows',bounces=2,product_page_views=10))
+(predict(model4, newdata = data.frame(site='Acme',new_customer=1,platform='Windows',bounces=2,product_page_views=10)))
 
-
+exp(predict(model4, newdata = data.frame(site='Acme',new_customer=1,platform='Windows',bounces=2,product_page_views=10)))
 
 #abline(lm(gross_sales ~ visits, data = data1))
 # cor, pairs, summary
